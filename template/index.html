@@ -1,0 +1,97 @@
+{% extends 'header.html' %}
+
+{% block body %}
+<style>
+    .card-img-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card-img-container:hover .card-img-top {
+        transform: scale(1.1);
+    }
+    .custom-container {
+    margin-top: 7rem; /* Adjust the value as needed */
+    margin-bottom: 5rem; /* Add a bottom margin if necessary */
+}
+    
+</style>
+
+<div class="container custom-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">Coming Soon</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for i in coming_soon_movies %}
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-img-container">
+                    {% if i.image %}
+                    <img src="{{ i.image.url }}" class="card-img-top" alt="Card image cap" style="max-width: 100%; height:305px;">
+                    {% else %}
+                        <!-- Provide a default image or placeholder if no image is available -->
+                        
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <a href="{% url 'details' i.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">Now Running</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for i in running_movies %}
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-img-container">
+                    <img src="{{ i.image.url }}" class="card-img-top" alt="Card image cap" style="max-width: 100%; height:305px;">
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <a href="{% url 'details' i.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">International Releases</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for i in international_movies %}
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-img-container">
+                    <img src="{{ i.image.url }}" class="card-img-top" alt="Card image cap" style="max-width: 100%; height:305px;">
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name|truncatechars:10 }}</h5>
+
+
+                    <a href="{% url 'details' i.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

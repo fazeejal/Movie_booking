@@ -1,0 +1,46 @@
+<!-- add.html -->
+
+{% extends 'header.html' %}
+
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Add New Movie</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Movie Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Movie Name" required>
+        </div>
+        <div class="form-group">
+            <label for="desc">Description:</label>
+            <textarea class="form-control" id="desc" name="desc" placeholder="Enter Description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="year">Release Year:</label>
+            <input type="date" class="form-control" id="year" name="year" placeholder="Enter Release Year" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Upload Image:</label>
+            <input type="file" class="form-control-file" id="image" name="image"  required>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="is_coming_soon" name="is_coming_soon">
+            <label class="form-check-label" for="is_coming_soon">Coming Soon</label>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="is_running" name="is_running">
+            <label class="form-check-label" for="is_running">Now Running</label>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="is_international_release" name="is_international_release">
+            <label class="form-check-label" for="is_international_release">International Release</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+    </form>
+</div>
+
+{% endblock %}

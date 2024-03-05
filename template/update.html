@@ -1,0 +1,14 @@
+{% extends 'header.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+
+{% endblock %}
+<!-- 
+
+{{ form.as_p }} will be replaced by a series of <p> elements, each containing a label and an input field for a form field. 
+    It's a simple and compact way to render the entire form without explicitly specifying each field individually. -->

@@ -1,0 +1,25 @@
+{% extends 'header.html' %}
+{% block body %}
+<style>
+    .custom-container {
+    margin-top: 7rem; /* Adjust the value as needed */
+    margin-bottom: 5rem; /* Add a bottom margin if necessary */
+}
+</style>
+<div class="container custom-container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ movie.image.url }}" style="width: 200px; height: 300px;">
+        </div>
+
+        <div class="col-md-6">
+            <h3>{{ movie.name }}</h3>
+            <h6>{{ movie.desc }}</h6>
+            {{ movie.Year }}
+            <br>
+            <a class="btn btn-warning" href="{% url 'update' movie.id %}" >Update</a>
+            <a class="btn btn-danger" href="{% url 'delete' movie.id %}">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
